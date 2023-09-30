@@ -21,7 +21,10 @@ def read_dataset(path: str) -> list[dict]:
     :returns: it returns a list of dictionaries
 
     """
+    #create an empty list to store dictionary
+    data = []
 
+    #this code allows us to read each row in the csv file
     with open(path, 'r') as file:
         data = csv.reader(file)
         for row in data:
