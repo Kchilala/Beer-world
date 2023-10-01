@@ -22,11 +22,23 @@ def read_dataset(path: str) -> list[dict]:
 
     """
     #create an empty list to store dictionary
-    data = []
+    data_csv = []
 
     #this code opens the csv file and read each row
-    with open(path, 'r', encoding= 'utf8') as file:
-        data = csv.reader(file)
+    with open(path, 'r', encoding= 'utf-8') as file:
+        data = csv.DictReader(file)
+
         for row in data:
-            print(row)
+            # this code creates a new key
+            new_key_dict = {key.replace('styleId', 'style_id'): value for key, value in row.items()}
+            # this code does the same as above
+            new_key_dicto = {key.replace('code', 'postal_code'): value for key, value in new_key_dict.items()}
+            data_csv.append(new_key_dicto)
+
+    return data_csv
+
+
+print(read_dataset(path))
+
+
 # // END_TODO [task_2]
