@@ -21,10 +21,11 @@ def read_dataset(path: str) -> list[dict]:
     :returns: it returns a list of dictionaries
 
     """
-    #create an empty list to store dictionary
+    # create an empty list to store dictionary
     data_csv: list = []
-
-    #this code opens the csv file and read each row
+    months: list = ['January_22', 'February_22', 'March_22', 'April_22', 'May_22', 'June_22', 'July_22', 'August_22',
+                    'September_22', 'October_22', 'November_22', 'December_22']
+    # this code opens the csv file and read each row
     with open(path, 'r', encoding= 'utf-8') as file:
         data = csv.DictReader(file)
 
@@ -33,9 +34,19 @@ def read_dataset(path: str) -> list[dict]:
             new_key_dict = {key.replace('styleId', 'style_id'): value for key, value in row.items()}
             # this code does the same as above
             new_key_dicto = {key.replace('code', 'postal_code'): value for key, value in new_key_dict.items()}
+            for key, value in new_key_dicto.items():
+                # this code below changes the value from strings to integers
+                if key == 'cat_id' or key == 'brewery_id' or key == 'beer_id':
+                    new_key_dicto[key] = int(value)
+                # this code converts a string to a float
+                if key == 'abv':
+                    new_key_dicto[key] = float(value)
+                if key in months:
+                    new_key_dicto[key] = float(value)
+
             data_csv.append(new_key_dicto)
 
-    return data_csv
+    return data_csv[0]
 
 
 print(read_dataset(path))
