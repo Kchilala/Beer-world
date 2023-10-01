@@ -24,8 +24,8 @@ def read_dataset(path: str) -> list[dict]:
     #create an empty list to store dictionary
     data = []
 
-    #this code allows us to read each row in the csv file
-    with open(path, 'r') as file:
+    #this code opens the csv file and read each row
+    with open(path, 'r', encoding= 'utf8') as file:
         data = csv.reader(file)
         for row in data:
             print(row)
