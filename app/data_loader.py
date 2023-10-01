@@ -22,7 +22,7 @@ def read_dataset(path: str) -> list[dict]:
 
     """
     #create an empty list to store dictionary
-    data_csv = []
+    data_csv: list = []
 
     #this code opens the csv file and read each row
     with open(path, 'r', encoding= 'utf-8') as file:
