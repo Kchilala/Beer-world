@@ -46,7 +46,7 @@ def read_dataset(path: str) -> list[dict]:
 
             data_csv.append(new_key_dicto)
 
-    return data_csv[0]
+    return data_csv
 
 
 print(read_dataset(path))
