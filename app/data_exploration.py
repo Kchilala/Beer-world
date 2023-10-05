@@ -7,6 +7,8 @@ This software is made available under the terms of the MIT License.
 """
 
 from typing import List, Dict
+import csv
+import pytest
 
 
 def explore(data: List[Dict[str, any]]) -> None:
@@ -36,31 +38,64 @@ def explore(data: List[Dict[str, any]]) -> None:
 
 # // BEGIN_TODO [task_3a] count of beer styles produced in the given state
 # Create the function get state style count
-def get_state_style_count(data, state: str)-> dict:
+from app.data_loader import read_dataset
+path = "/Users/kecichilala/PycharmProjects/h11-assignment-2-template/assets/beer_db_v4.csv"
+def get_state_style_count(dataset, state: str)-> [dict]:
     """
-    this function returns each styles of beer state produces, and how many beers of each style
+    This function returns each styles of beer state produces, and how many beers of each style
     :param:given the data (as returned by the read dataset function) and a state
     :return:returns a dictionary where each style name is a key with the count as its value
     """
+    # Initialize an empty dictionary to store beer style counts
+    style_counts = {}
+    # Iterate through the dataset
+    for row in dataset:
+        if row['state'] == state:
+            # Check if the current row's state matches the specified state
+            if row["style_name"] not in style_counts:
+                style_counts[row["style_name"]] = 1
+            # If the style is not in the dictionary, add it with a count of 1
+            # If the style is already in the dictionary, increment its count by 1
+            elif row["style_name"] in style_counts:
+                style_counts[row["style_name"]] += 1
+        # If the row's state doesn't match the specified state, ensure the style is in the dictionary
+        # If it's not, add it with a count of 0
+        if row["style_name"] not in style_counts:
+            style_counts[row["style_name"]] = 0
+
+    return style_counts
+
 
 # // END_TODO [task_3a]
 
 
 # // BEGIN_TODO [task_3b] Retrieve the breweries producing beers of a specific style
+def get_breweries_from_style(data, substring)->list[dict]:
+    """
+    This function gives information about breweries that have beers with style containing the given substring.
+    """
 # // END_TODO [task_3b]
 
 
+
 # // BEGIN_TODO [task_3c1] Compute the mean abv of the beers in the list of dictionaries
+#def compute_mean_abv(list[dict])->float:
+"""
+This function calculate the average alcohol percentage of the beers for each individual brewery. 
+"""
 # // END_TODO [task_3C1]
 
 
 # // BEGIN_TODO [task_3c2] Retrieve the breweries from a specific state.
+#def get_breweries_from_state(list[dict])->list[dict]:
 # // END_TODO [task_3c2]
 
 
 # // BEGIN_TODO [task_3c3] Retrieve the beers produced by a specific brewery.
+#def get_beers_from_brewery(data)->list[dict]:
 # // END_TODO [task_3c3]
 
 
 # // BEGIN_TODO [task_3c4] Retrieve the breweries in state, calculate mean ABV of their beers, and add as new key
+#def add_mean_abv_state_breweries(data)
 # // END_TODO [task_3c4]

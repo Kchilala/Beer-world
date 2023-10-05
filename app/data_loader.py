@@ -12,6 +12,7 @@ from typing import List, Dict
 
 # // BEGIN_TODO [task_2] Loading and preparing the dataset
 path = "/Users/kecichilala/PycharmProjects/h11-assignment-2-template/assets/beer_db_v4.csv"
+
 def read_dataset(path: str) -> list[dict]:
     """
     this function opens the file name and reads the csv file
@@ -49,7 +50,7 @@ def read_dataset(path: str) -> list[dict]:
     return data_csv
 
 
-print(read_dataset(path))
+#print(read_dataset(path))
 
 
 # // END_TODO [task_2]
