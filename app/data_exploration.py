@@ -83,14 +83,14 @@ def get_breweries_from_style(dataset: List[Dict[str, Any]], beerstyle: str) -> L
     lower_beerstyle: str = beerstyle.lower()
 
     # List to store filtered beer information
-    filtered_beers: List[Dict[str, Any]] = []
+    filtered_beers: list[Dict[str, Any]] = []
 
     # Iterate through the dataset
     for value in dataset:
         # Split style_name into words and check if lower_beerstyle is in the words
         if lower_beerstyle in [word.lower() for word in value['style_name'].split()]:
             # Keys to be removed from the dictionary
-            remove_keys: List[str] = ['January_22', 'February_22', 'March_22', 'April_22', 'May_22',
+            remove_keys: list[str] = ['January_22', 'February_22', 'March_22', 'April_22', 'May_22',
                                   'June_22', 'July_22', 'August_22', 'September_22', 'October_22',
                                   'November_22', 'December_22']
 
@@ -145,7 +145,39 @@ def compute_mean_abv(data: List[Dict[str, any]]) -> Dict[str, float]:
 
 
 # // BEGIN_TODO [task_3c2] Retrieve the breweries from a specific state.
-#def get_breweries_from_state(list[dict])->list[dict]:
+from typing import List, Dict
+
+def get_breweries_from_state(data: List[Dict[str, str]], state: str) -> List[Dict[str, str]]:
+    """
+    Filters a list of dictionaries containing brewery information based on the specified state.
+
+    :param:data (List[Dict[str, str]]): List of dictionaries with brewery information.
+        state (str): The state to filter breweries by.
+
+    :returns: List[Dict[str, str]]: List of filtered dictionaries containing brewery information.
+
+    """
+
+    # List to store filtered brewery information
+    filtered_breweries: List[Dict[str, str]] = []
+
+    # Keys to be removed from each dictionary
+    keys_to_remove: List[str] = ['January_22', 'February_22', 'March_22', 'April_22', 'May_22',
+                                 'June_22', 'July_22', 'August_22', 'September_22', 'October_22',
+                                 'November_22', 'December_22']
+
+    # Iterate through the brewery information data
+    for brewery_info in data:
+        # Check if the brewery is located in the specified state
+        if brewery_info['state'] == state:
+            # Create a new dictionary excluding the specified keys
+            filtered_dict: Dict[str, str] = {key: value for key, value in brewery_info.items() if key not in keys_to_remove}
+            # Append the filtered dictionary to the list of filtered breweries
+            filtered_breweries.append(filtered_dict)
+
+    # Return the list of filtered breweries
+    return filtered_breweries
+
 # // END_TODO [task_3c2]
 
 
