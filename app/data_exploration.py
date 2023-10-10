@@ -106,10 +106,41 @@ def get_breweries_from_style(dataset: List[Dict[str, Any]], beerstyle: str) -> L
 
 
 # // BEGIN_TODO [task_3c1] Compute the mean abv of the beers in the list of dictionaries
-#def compute_mean_abv(list[dict])->float:
-"""
-This function calculate the average alcohol percentage of the beers for each individual brewery. 
-"""
+from typing import List, Dict
+
+def compute_mean_abv(data: List[Dict[str, any]]) -> Dict[str, float]:
+    """
+    Calculate the average alcohol percentage of the beers for each individual brewery.
+
+    :param:data (List[Dict[str, any]]): List of dictionaries containing beer information.
+
+    :returns: Dict[str, float]: A dictionary with brewery names as keys and average alcohol content as values.
+    """
+
+    # Dictionary to store total ABV and count of beers for each brewery
+    abv_mean_dict: Dict[str, float] = {}
+    beer_count_dict: Dict[str, int] = {}
+
+    # Iterate through the list of beer dictionaries
+    for beer in data:
+        brewery_name: str = beer.get("brewery_name", "")
+        abv: float = beer.get("abv", 0.0)
+
+        # Update total ABV and beer count for the brewery
+        if brewery_name in abv_mean_dict:
+            abv_mean_dict[brewery_name] += abv
+            beer_count_dict[brewery_name] += 1
+        else:
+            abv_mean_dict[brewery_name] = abv
+            beer_count_dict[brewery_name] = 1
+
+    # Calculate average ABV for each brewery
+    for brewery_name, total_abv in abv_mean_dict.items():
+        mean_abv: float = total_abv / beer_count_dict[brewery_name]
+        abv_mean_dict[brewery_name] = mean_abv
+
+    return abv_mean_dict
+
 # // END_TODO [task_3C1]
 
 
