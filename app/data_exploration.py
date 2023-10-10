@@ -40,10 +40,10 @@ def explore(data: List[Dict[str, any]]) -> None:
 # Create the function get state style count
 from app.data_loader import read_dataset
 path = "/Users/kecichilala/PycharmProjects/h11-assignment-2-template/assets/beer_db_v4.csv"
-def get_state_style_count(dataset, state: str)-> [dict]:
+def get_state_style_count(dataset, state: str)-> dict:
     """
     This function returns each styles of beer state produces, and how many beers of each style
-    :param:given the data (as returned by the read dataset function) and a state
+    :param dataset:given the data (as returned by the read dataset function) and a state
     :return:returns a dictionary where each style name is a key with the count as its value
     """
     # Initialize an empty dictionary to store beer style counts
@@ -70,10 +70,37 @@ def get_state_style_count(dataset, state: str)-> [dict]:
 
 
 # // BEGIN_TODO [task_3b] Retrieve the breweries producing beers of a specific style
-def get_breweries_from_style(data, substring)->list[dict]:
+def get_breweries_from_style(dataset: List[Dict[str, Any]], beerstyle: str) -> List[Dict[str, Any]]:
     """
     This function gives information about breweries that have beers with style containing the given substring.
+    :param dataset:given the data (as returned by the read dataset function) and a state
+    :param beerstyle: this parameter is a string of the beerstyle
+    :returns: a list of dictionaries with information about breweries that have beers with style containing the given substring
+
     """
+
+
+    lower_beerstyle: str = beerstyle.lower()
+
+    # List to store filtered beer information
+    filtered_beers: List[Dict[str, Any]] = []
+
+    # Iterate through the dataset
+    for value in dataset:
+        # Split style_name into words and check if lower_beerstyle is in the words
+        if lower_beerstyle in [word.lower() for word in value['style_name'].split()]:
+            # Keys to be removed from the dictionary
+            remove_keys: List[str] = ['January_22', 'February_22', 'March_22', 'April_22', 'May_22',
+                                  'June_22', 'July_22', 'August_22', 'September_22', 'October_22',
+                                  'November_22', 'December_22']
+
+            # Create a new dictionary without specified keys
+            new_dict: Dict[str, Any] = {key: v for key, v in value.items() if key not in remove_keys}
+
+            # Check if the new dictionary is not already in filtered_beers list
+            if new_dict not in filtered_beers:
+                filtered_beers.append(new_dict)
+    return filtered_beers
 # // END_TODO [task_3b]
 
 

@@ -8,7 +8,7 @@ This software is made available under the terms of the MIT License.
 
 from app.data_exploration import *
 import pytest
-fr
+from app_data_exploration
 
 
 # Fixture to provide the CSV file path for testing
