@@ -21,8 +21,12 @@
 
 ### Task 4: Further Analyzes
 Document your functions here. In particular:
-- Problem to solve.
+- Problem to solve. 
+* How many brewers are there per country? what is the most common beer styles per country? what is the total beer production in ton?
 - Motivation behind the analysis.
+* I want to know what the percentage of the most common beer style is per country in total of the beer production.
 - Where in the project your code has been implemented.
+* In task 4 
 - The design choices you made.
+*
 - Expected input and output of each function you have defined.

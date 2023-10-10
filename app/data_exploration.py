@@ -40,7 +40,7 @@ def get_state_style_count(data, state: str)-> dict:
     """
     this function returns each styles of beer state produces, and how many beers of each style
     :param:given the data (as returned by the read dataset function) and a state
-    :return:returns a dictionary where each style name is a key with the count as its value
+    :return:returns a dictionary where each style name is a key with the count as its value 
     """
 
 # // END_TODO [task_3a]
