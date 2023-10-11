@@ -17,7 +17,7 @@ if __name__ == '__main__':
 
     # Run Dashboard? (set to True to run Dash, set to False for console printing)
     # Leave this on false until you are done with the data prep and EDA exercises!
-    dash_mode: bool = False
+    dash_mode: bool = True
 
     if dash_mode:
         my_dashboard = dashboard.create_dashboard(data)
