@@ -18,6 +18,7 @@ import dash_bootstrap_components as dbc
 from dash_bootstrap_components import Row
 
 
+
 def create_dashboard(data: List[Dict[str, any]]) -> Dash:
     """
     Initializes the dashboard with layout, content and interactivity.
