@@ -219,6 +219,8 @@ def create_dashboard(data: List[Dict[str, any]]) -> Dash:
 
         # // BEGIN_TODO [task_5a] Adding a bar chart
 
+        fig = px.bar(item_data, x='cat_name')
+
         # // END_TODO [task_5a]
 
         return fig
@@ -249,6 +251,12 @@ def create_dashboard(data: List[Dict[str, any]]) -> Dash:
         max_value_key = "unknown"
 
         # // BEGIN_TODO [task_5b] Adding beer category with highest median abv
+
+        max_value = -1000
+        for key, value in cat_median_abv_dict.items():
+            if value > max_value:
+                max_value = value
+                max_value_key = key
 
 
         # // END_TODO [task_5b]
