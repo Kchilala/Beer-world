@@ -40,16 +40,17 @@ def explore(data: List[Dict[str, any]]) -> None:
 # Create the function get state style count
 from app.data_loader import read_dataset
 path = "../assets/beer_db_v4.csv"
-def get_state_style_count(dataset, state: str)-> dict:
+data: list[dict] = read_dataset(path)
+def get_state_style_count(data: list[dict], state: str)-> dict:
     """
-    This function returns each styles of beer state produces, and how many beers of each style.
-    :param dataset:given the data (as returned by the read dataset function) and a state.
-    :return:returns a dictionary where each style name is a key with the count as its value.
+    This function returns each styles of beer state produces, and how many beers of each style
+    :param dataset:given the data (as returned by the read dataset function) and a state
+    :return:returns a dictionary where each style name is a key with the count as its value
     """
     # Initialize an empty dictionary to store beer style counts
     style_counts = {}
     # Iterate through the dataset
-    for row in dataset:
+    for row in data:
         if row['state'] == state:
             # Check if the current row's state matches the specified state
             if row["style_name"] not in style_counts:
@@ -70,12 +71,15 @@ def get_state_style_count(dataset, state: str)-> dict:
 
 
 # // BEGIN_TODO [task_3b] Retrieve the breweries producing beers of a specific style
-def get_breweries_from_style(dataset: List[Dict[str, any]], beerstyle: str) -> List[Dict[str, any]]:
+from app.data_loader import read_dataset
+path = "../assets/beer_db_v4.csv"
+data: list[dict] = read_dataset(path)
+def get_breweries_from_style(data: List[dict], beerstyle: str) -> List[Dict[str, any]]:
     """
     This function gives information about breweries that have beers with style containing the given substring.
-    :param dataset:given the data (as returned by the read dataset function) and a state.
-    :param beerstyle: this parameter is a string of the beerstyle.
-    :returns: a list of dictionaries with information about breweries that have beers with style containing the given substring.
+    :param data:given the data (as returned by the read dataset function) and a state
+    :param beerstyle: this parameter is a string of the beerstyle
+    :returns: a list of dictionaries with information about breweries that have beers with style containing the given substring
 
     """
 
@@ -85,8 +89,8 @@ def get_breweries_from_style(dataset: List[Dict[str, any]], beerstyle: str) -> L
     # List to store filtered beer information
     filtered_beers: list[Dict[str, any]] = []
 
-    # Iterate through the dataset
-    for value in dataset:
+    # Iterate through the data
+    for value in data:
         # Split style_name into words and check if lower_beerstyle is in the words
         if lower_beerstyle in [word.lower() for word in value['style_name'].split()]:
             # Keys to be removed from the dictionary
@@ -97,26 +101,32 @@ def get_breweries_from_style(dataset: List[Dict[str, any]], beerstyle: str) -> L
             ]
 
             # Create a new dictionary without specified keys
-            new_dict: Dict[str, Any] = {key: v for key, v in value.items() if key not in remove_keys}
+            new_dict: Dict[str, any] = {key: v for key, v in value.items() if key not in remove_keys}
 
             # Check if the new dictionary is not already in filtered_beers list
             if new_dict not in filtered_beers:
                 filtered_beers.append(new_dict)
     return filtered_beers
+
+breweries_blonde = get_breweries_from_style(data, "Blonde")
+
 # // END_TODO [task_3b]
 
 
 
 # // BEGIN_TODO [task_3c1] Compute the mean abv of the beers in the list of dictionaries
+from app.data_loader import read_dataset
+path = "../assets/beer_db_v4.csv"
+data: list[dict] = read_dataset(path)
 from typing import List, Dict
 
-def compute_mean_abv(data: List[Dict[str, any]]) -> Dict[str, float]:
+def compute_mean_abv(data: List[dict]) ->dict[str, float]:
     """
     Calculate the average alcohol percentage of the beers for each individual brewery.
 
-    :param:data (List[Dict[str, any]]): List of dictionaries containing beer information.
+    :param:data (List[dict]): List of dictionaries containing beer information.
 
-    :return: Dict[str, float]: A dictionary with brewery names as keys and average alcohol content as values.
+    :returns: Dict[str, float]: A dictionary with brewery names as keys and average alcohol content as values.
     """
 
     # Dictionary to store total ABV and count of beers for each brewery
@@ -148,7 +158,9 @@ def compute_mean_abv(data: List[Dict[str, any]]) -> Dict[str, float]:
 
 # // BEGIN_TODO [task_3c2] Retrieve the breweries from a specific state.
 from typing import List, Dict
-
+from app.data_loader import read_dataset
+path = "../assets/beer_db_v4.csv"
+data: list[dict] = read_dataset(path)
 def get_breweries_from_state(data: List[Dict[str, str]], state: str) -> List[Dict[str, str]]:
     """
     Filters a list of dictionaries containing brewery information based on the specified state.
@@ -187,7 +199,9 @@ def get_breweries_from_state(data: List[Dict[str, str]], state: str) -> List[Dic
 
 # // BEGIN_TODO [task_3c3] Retrieve the beers produced by a specific brewery.
 from typing import List, Dict
-
+from app.data_loader import read_dataset
+path = "../assets/beer_db_v4.csv"
+data: list[dict] = read_dataset(path)
 def get_beers_from_brewery(data: List[Dict[str, any]], brewery_id: int) -> List[Dict[str, any]]:
     """
     Get a list of dictionaries containing beers belonging to the specified brewery.
@@ -213,7 +227,10 @@ def get_beers_from_brewery(data: List[Dict[str, any]], brewery_id: int) -> List[
 
 
 # // BEGIN_TODO [task_3c4] Retrieve the breweries in state, calculate mean ABV of their beers, and add as new key
-def add_mean_abv_state_breweries(data: List[Dict[str, any]], breweries: List[Dict[str, any]], state: str) -> List[Dict[str, any]]:
+from app.data_loader import read_dataset
+path = "../assets/beer_db_v4.csv"
+data: list[dict] = read_dataset(path)
+def add_mean_abv_state_breweries(data:list[dict], breweries: list[Dict[str, any]], state: str) -> list[Dict[str, any]]:
     """
     Add mean ABV (Alcohol by Volume) field to each brewery dictionary for the given state.
 
@@ -223,9 +240,10 @@ def add_mean_abv_state_breweries(data: List[Dict[str, any]], breweries: List[Dic
 
     :returns:List[Dict[str, Any]]: List of dictionaries containing breweries with mean ABV field.
     """
+
     # Get beers from the specified state
     state_beers = [beer for brewery in breweries if brewery['state'] == state
-                   for beer in get_beers_from_brewery(data, brewery['id'])]
+                   for beer in get_beers_from_brewery(data, brewery['brewery_id'])]
 
     # Calculate mean ABV for the state's beers
     mean_abv = sum(beer['abv'] for beer in state_beers) / len(state_beers) if state_beers else 0
@@ -235,5 +253,9 @@ def add_mean_abv_state_breweries(data: List[Dict[str, any]], breweries: List[Dic
         if brewery['state'] == state:
             brewery['mean_abv'] = mean_abv
 
+
     return breweries
+
+
+
 # // END_TODO [task_3c4]
