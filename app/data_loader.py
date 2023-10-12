@@ -11,7 +11,7 @@ from typing import List, Dict
 
 
 # // BEGIN_TODO [task_2] Loading and preparing the dataset
-path = "/Users/MB/PycharmProjects/h11-assignment-2-template/assets/beer_db_v4.csv"
+path = "../assets/beer_db_v4.csv"
 def read_dataset(path: str) -> list[dict]:
     """
     this function opens the file name and reads the csv file
