@@ -90,9 +90,11 @@ def get_breweries_from_style(dataset: List[Dict[str, any]], beerstyle: str) -> L
         # Split style_name into words and check if lower_beerstyle is in the words
         if lower_beerstyle in [word.lower() for word in value['style_name'].split()]:
             # Keys to be removed from the dictionary
-            remove_keys: list[str] = ['January_22', 'February_22', 'March_22', 'April_22', 'May_22',
-                                  'June_22', 'July_22', 'August_22', 'September_22', 'October_22',
-                                  'November_22', 'December_22']
+            remove_keys: list[str] = [
+                                    'January_22', 'February_22', 'March_22', 'April_22', 'May_22',
+                                    'June_22', 'July_22', 'August_22', 'September_22', 'October_22',
+                                    'November_22', 'December_22'
+            ]
 
             # Create a new dictionary without specified keys
             new_dict: Dict[str, Any] = {key: v for key, v in value.items() if key not in remove_keys}
@@ -162,9 +164,11 @@ def get_breweries_from_state(data: List[Dict[str, str]], state: str) -> List[Dic
     filtered_breweries: List[Dict[str, str]] = []
 
     # Keys to be removed from each dictionary
-    keys_to_remove: List[str] = ['January_22', 'February_22', 'March_22', 'April_22', 'May_22',
-                                 'June_22', 'July_22', 'August_22', 'September_22', 'October_22',
-                                 'November_22', 'December_22']
+    keys_to_remove: List[str] = [
+                                'January_22', 'February_22', 'March_22', 'April_22', 'May_22',
+                                'June_22', 'July_22', 'August_22', 'September_22', 'October_22',
+                                'November_22', 'December_22'
+    ]
 
     # Iterate through the brewery information data
     for brewery_info in data:
