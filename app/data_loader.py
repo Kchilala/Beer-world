@@ -23,8 +23,10 @@ def read_dataset(path: str) -> list[dict]:
     """
     # create an empty list to store dictionary
     data_csv: list = []
-    months: list = ['January_22', 'February_22', 'March_22', 'April_22', 'May_22', 'June_22', 'July_22', 'August_22',
-                    'September_22', 'October_22', 'November_22', 'December_22']
+    months: list = [
+                    'January_22', 'February_22', 'March_22', 'April_22', 'May_22', 'June_22', 'July_22', 'August_22',
+                    'September_22', 'October_22', 'November_22', 'December_22'
+    ]
     # this code opens the csv file and read each row
     with open(path, 'r', encoding= 'utf-8') as file:
         data = csv.DictReader(file)
