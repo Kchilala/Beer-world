@@ -15,7 +15,7 @@ path = "../assets/beer_db_v4.csv"
 def read_dataset(path: str) -> list[dict]:
     """
     this function opens the file name and reads the csv file
-    and returns a list of dictionary's.
+    and returns a list of dictionaries.
 
     :parameter: this is a string of the path of the file
     :returns: it returns a list of dictionaries
@@ -49,7 +49,7 @@ def read_dataset(path: str) -> list[dict]:
     return data_csv
 
 
-print(read_dataset(path))
+
 
 
 # // END_TODO [task_2]

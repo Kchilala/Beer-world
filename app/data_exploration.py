@@ -39,12 +39,12 @@ def explore(data: List[Dict[str, any]]) -> None:
 # // BEGIN_TODO [task_3a] count of beer styles produced in the given state
 # Create the function get state style count
 from app.data_loader import read_dataset
-path = "/Users/kecichilala/PycharmProjects/h11-assignment-2-template/assets/beer_db_v4.csv"
+path = "../assets/beer_db_v4.csv"
 def get_state_style_count(dataset, state: str)-> dict:
     """
-    This function returns each styles of beer state produces, and how many beers of each style
-    :param dataset:given the data (as returned by the read dataset function) and a state
-    :return:returns a dictionary where each style name is a key with the count as its value
+    This function returns each styles of beer state produces, and how many beers of each style.
+    :param dataset:given the data (as returned by the read dataset function) and a state.
+    :return:returns a dictionary where each style name is a key with the count as its value.
     """
     # Initialize an empty dictionary to store beer style counts
     style_counts = {}
@@ -73,9 +73,9 @@ def get_state_style_count(dataset, state: str)-> dict:
 def get_breweries_from_style(dataset: List[Dict[str, any]], beerstyle: str) -> List[Dict[str, any]]:
     """
     This function gives information about breweries that have beers with style containing the given substring.
-    :param dataset:given the data (as returned by the read dataset function) and a state
-    :param beerstyle: this parameter is a string of the beerstyle
-    :returns: a list of dictionaries with information about breweries that have beers with style containing the given substring
+    :param dataset:given the data (as returned by the read dataset function) and a state.
+    :param beerstyle: this parameter is a string of the beerstyle.
+    :returns: a list of dictionaries with information about breweries that have beers with style containing the given substring.
 
     """
 
@@ -114,7 +114,7 @@ def compute_mean_abv(data: List[Dict[str, any]]) -> Dict[str, float]:
 
     :param:data (List[Dict[str, any]]): List of dictionaries containing beer information.
 
-    :returns: Dict[str, float]: A dictionary with brewery names as keys and average alcohol content as values.
+    :return: Dict[str, float]: A dictionary with brewery names as keys and average alcohol content as values.
     """
 
     # Dictionary to store total ABV and count of beers for each brewery
