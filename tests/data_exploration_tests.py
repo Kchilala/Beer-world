@@ -18,7 +18,7 @@ import pytest
 
 # @pytest.fixture():
 
-    # Test to check if the function returns a list of dictionaries
+# Test to check if the function returns a list of dictionaries
 # def test_count_states_returns_list_of_dicts(csv_file_path, column_name):
 #     state_counts = count_states_in_csv(csv_file_path, column_name)
 #     assert isinstance(state_counts, list)
@@ -66,9 +66,7 @@ def test_get_state_style_count() -> dict:
 def test_get_state_style_count_in_dict() -> dict:
     """
 
-    :param data:
-    :param state:
-    :return:
+    pytest get_state_style_count(path)
     """
     path = "../assets/beer_db_v4.csv"
     data: list[dict] = read_dataset(path)
@@ -80,8 +78,8 @@ def test_get_state_style_count_in_dict() -> dict:
 
 def test_get_breweries_from_style()-> int:
     """
+    pytest get_breweries_breweries_from_style(data, beerstyle)
 
-    :return:
     """
     path = "../assets/beer_db_v4.csv"
     data: list[dict] = read_dataset(path)
@@ -90,8 +88,8 @@ def test_get_breweries_from_style()-> int:
 
 def test2_get_breweries_from_style()-> int:
     """
+    pytest get_breweries_breweries_from_style(data, beerstyle)
 
-    :return:
     """
     path = "../assets/beer_db_v4.csv"
     data: list[dict] = read_dataset(path)

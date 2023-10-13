@@ -16,7 +16,7 @@ import pytest
 
 def test_read_data_set() :
     """
-
+    pytest read_dataset(path)
 
     """
 
@@ -27,7 +27,7 @@ def test_read_data_set() :
 
 def test2_read_data_set() :
     """
-
+    pytest read_read_dataset(path)
 
     """
 
