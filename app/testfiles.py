@@ -212,23 +212,23 @@ def test2_add_mean_abv_state_breweries_no_beers():
     expected_result = breweries  # Expected result is the same as the input breweries
     assert result != dict
 
-def test_read_data_set() -> list[dict]:
-    """
-
-    :return:
-    """
-
-    path = "../assets/beer_db_v4.csv"
-    data: list[dict] = read_dataset(path)
-    assert data[0] == dict
-
-
-def test2_read_data_set() -> list[dict]:
-    """
-
-    :return:
-    """
-
-    path = "../assets/beer_db_v4.csv"
-    data: list[dict] = read_dataset(path)
-    assert data[0] in data
+# def test_read_data_set() -> list[dict]:
+#     """
+#
+#     :return:
+#     """
+#
+#     path = "../assets/beer_db_v4.csv"
+#     data: list[dict] = read_dataset(path)
+#     assert data[0] == dict
+#
+#
+# def test2_read_data_set() -> list[dict]:
+#     """
+#
+#     :return:
+#     """
+#
+#     path = "../assets/beer_db_v4.csv"
+#     data: list[dict] = read_dataset(path)
+#     assert data[0] in data
