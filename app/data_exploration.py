@@ -108,7 +108,6 @@ def get_breweries_from_style(data: List[dict], beerstyle: str) -> List[Dict[str,
                 filtered_beers.append(new_dict)
     return filtered_beers
 
-breweries_blonde = get_breweries_from_style(data, "Blonde")
 
 # // END_TODO [task_3b]
 
